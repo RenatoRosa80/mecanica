@@ -13,7 +13,11 @@ git commit -m "Final project version"
 git push -u origin main --force
 
 
+git log --oneline -3
+
 for Render:
+
+git commit -m "FIX: Configure ALLOWED_HOSTS and update requirements"
 
 gunicorn
 
