@@ -15,7 +15,8 @@ SECRET_KEY = 'django-insecure-c+_fb=zo*yi%hd7caipj3z8*9b%_&t*pn%7it+7dv-35e$pv5_
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# mecanica/settings.py
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
