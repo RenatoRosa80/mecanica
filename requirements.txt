@@ -1,0 +1,31 @@
+# Framework principal
+Django>=5.0,<6.0
+
+# Arquivos estáticos, uploads e imagens
+pillow
+
+# Forms mais bonitos
+django-crispy-forms
+crispy-bootstrap5
+
+# Filtros e buscas avançadas
+django-filter
+
+# Relatórios PDF
+reportlab
+xhtml2pdf
+
+# Exportações Excel / CSV
+openpyxl
+
+# Para geração de gráficos (relatórios)
+matplotlib
+
+# Segurança e utilidades
+python-dotenv
+
+# Caso um dia migre para PostgreSQL
+psycopg2-binary
+
+# Utils opcionais
+requests

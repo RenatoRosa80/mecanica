@@ -1,0 +1,37 @@
+{% extends "base_dashboard.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Financeiro</h2>
+    <a href="{% url 'financeiro_create' %}" class="btn btn-primary mb-3">Novo Lançamento</a>
+
+    <table class="table table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Descrição</th>
+                <th>Valor</th>
+                <th>Data</th>
+                <th>Tipo</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for lancamento in lancamentos %}
+            <tr>
+                <td>{{ lancamento.descricao }}</td>
+                <td>R$ {{ lancamento.valor }}</td>
+                <td>{{ lancamento.data }}</td>
+                <td>{{ lancamento.get_tipo_display }}</td>
+                <td>
+                    <a href="{% url 'financeiro_update' lancamento.id %}" class="btn btn-sm btn-warning">Editar</a>
+                    <a href="{% url 'financeiro_delete' lancamento.id %}" class="btn btn-sm btn-danger">Excluir</a>
+                </td>
+            </tr>
+        {% empty %}
+            <tr><td colspan="5" class="text-center">Nenhum registro encontrado.</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

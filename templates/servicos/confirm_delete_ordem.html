@@ -1,0 +1,9 @@
+{% extends "base_dashboard.html" %}
+{% block content %}
+<h1 class="text-2xl font-bold">Excluir Ordem</h1>
+<p>Tem certeza que deseja excluir a ordem #{{ object.pk }}?</p>
+<form method="post">{% csrf_token %}
+  <button class="bg-red-600 text-white px-3 py-1 rounded">Confirmar</button>
+  <a href="{% url 'servicos:ordens' %}" class="ml-2 text-gray-600">Cancelar</a>
+</form>
+{% endblock %}

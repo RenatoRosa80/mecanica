@@ -1,0 +1,22 @@
+{% extends "base_dashboard.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Relatórios</h2>
+    <p class="lead">Escolha um relatório abaixo:</p>
+
+    <ul class="list-group">
+        <li class="list-group-item">
+            <a href="{% url 'relatorio_financeiro' %}">📊 Relatório Financeiro</a>
+        </li>
+
+        <li class="list-group-item">
+            <a href="{% url 'relatorio_clientes' %}">👥 Relatório de Clientes</a>
+        </li>
+
+        <li class="list-group-item">
+            <a href="{% url 'relatorio_estoque' %}">📦 Relatório de Estoque</a>
+        </li>
+    </ul>
+</div>
+{% endblock %}

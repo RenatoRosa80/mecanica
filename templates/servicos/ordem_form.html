@@ -1,0 +1,38 @@
+{% extends "base_dashboard.html" %}
+{% load widget_tweaks %}
+{% block content %}
+<h1 class="text-2xl font-bold mb-4">{% if ordem %}Editar Ordem #{{ ordem.pk }}{% else %}Nova Ordem{% endif %}</h1>
+
+<form method="post">
+  {% csrf_token %}
+  <div class="grid grid-cols-1 gap-4 max-w-2xl">
+    <div class="card p-4">
+      {{ form.as_p }}
+    </div>
+
+    <div class="card p-4">
+      <h2 class="font-semibold mb-2">Itens</h2>
+      {{ formset.management_form }}
+      <table class="w-full">
+        <thead>
+          <tr><th>Serviço</th><th>Preço Unit.</th><th>Quantidade</th><th>Remover</th></tr>
+        </thead>
+        <tbody>
+          {% for f in formset %}
+          <tr>
+            <td>{{ f.servico }}</td>
+            <td>{{ f.preco_unitario }}</td>
+            <td>{{ f.quantidade }}</td>
+            <td>{% if f.DELETE %}{{ f.DELETE }}{% endif %}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <div class="mt-2">
+        <button class="bg-blue-600 text-white px-3 py-1 rounded">Salvar Ordem</button>
+        <a href="{% url 'servicos:ordens' %}" class="ml-2 text-gray-600">Cancelar</a>
+      </div>
+    </div>
+  </div>
+</form>
+{% endblock %}

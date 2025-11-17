@@ -1,0 +1,37 @@
+{% extends 'base_dashboard.html' %}
+{% block content %}
+
+<div class="container mt-4">
+
+    <h2>{{ titulo }}</h2>
+
+    <form method="post" class="mt-3">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label class="form-label">Nome</label>
+            {{ form.nome }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Categoria</label>
+            {{ form.categoria }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Quantidade</label>
+            {{ form.quantidade }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Preço Unitário</label>
+            {{ form.preco_unitario }}
+        </div>
+
+        <button type="submit" class="btn btn-success">Salvar</button>
+        <a href="{% url 'produto_list' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base_dashboard.html" %}
+{% block content %}
+<h1 class="text-2xl font-bold mb-2">{{ object.nome }}</h1>
+<p><strong>CPF:</strong> {{ object.cpf }}</p>
+<p><strong>Telefone:</strong> {{ object.telefone }}</p>
+<p><strong>Email:</strong> {{ object.email }}</p>
+<p><strong>Endereço:</strong> {{ object.endereco }}</p>
+<p class="mt-4">
+  <a href="{% url 'clientes:update' object.pk %}" class="bg-yellow-500 text-white px-3 py-1 rounded">Editar</a>
+  <a href="{% url 'clientes:delete' object.pk %}" class="bg-red-600 text-white px-3 py-1 rounded">Excluir</a>
+  <a href="{% url 'clientes:index' %}" class="ml-2 text-gray-600">Voltar</a>
+</p>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base_dashboard.html" %}
+{% block content %}
+
+<div class="flex justify-between items-center mb-4">
+  <h1 class="text-2xl font-bold">Veículos</h1>
+  <a href="{% url 'veiculos:create' %}" class="bg-green-600 text-white px-3 py-1 rounded">Novo Veículo</a>
+</div>
+
+<table class="w-full bg-white shadow rounded">
+  <thead class="bg-gray-100">
+    <tr>
+      <th class="p-2">Cliente</th>
+      <th class="p-2">Marca</th>
+      <th class="p-2">Modelo</th>
+      <th class="p-2">Ano</th>
+      <th class="p-2">Placa</th>
+      <th class="p-2">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for v in veiculos %}
+    <tr class="border-t">
+      <td class="p-2">{{ v.cliente.nome }}</td>
+      <td class="p-2">{{ v.marca }}</td>
+      <td class="p-2">{{ v.modelo }}</td>
+      <td class="p-2">{{ v.ano }}</td>
+      <td class="p-2">{{ v.placa }}</td>
+      <td class="p-2">
+        <a class="text-blue-600" href="{% url 'veiculos:detail' v.pk %}">Ver</a> |
+        <a class="text-yellow-600" href="{% url 'veiculos:update' v.pk %}">Editar</a> |
+        <a class="text-red-600" href="{% url 'veiculos:delete' v.pk %}">Excluir</a>
+      </td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="6" class="p-2 text-center">Nenhum veículo cadastrado.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

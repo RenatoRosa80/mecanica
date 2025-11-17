@@ -1,0 +1,40 @@
+{% extends "base_dashboard.html" %}
+{% block content %}
+<div class="flex justify-between items-center mb-4">
+  <h1 class="text-2xl font-bold">Ordens de Serviço</h1>
+  <a href="{% url 'servicos:ordem_create' %}" class="bg-green-600 text-white px-3 py-1 rounded">Nova Ordem</a>
+</div>
+
+<table class="w-full bg-white shadow rounded">
+  <thead class="bg-gray-100">
+    <tr>
+      <th class="p-2">#</th>
+      <th class="p-2">Cliente</th>
+      <th class="p-2">Veículo</th>
+      <th class="p-2">Status</th>
+      <th class="p-2">Aberta em</th>
+      <th class="p-2">Total</th>
+      <th class="p-2">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for o in ordens %}
+    <tr class="border-t">
+      <td class="p-2">{{ o.pk }}</td>
+      <td class="p-2">{{ o.cliente.nome }}</td>
+      <td class="p-2">{{ o.veiculo.placa }}</td>
+      <td class="p-2">{{ o.get_status_display }}</td>
+      <td class="p-2">{{ o.data_abertura }}</td>
+      <td class="p-2">R$ {{ o.total }}</td>
+      <td class="p-2">
+        <a href="{% url 'servicos:ordem_detail' o.pk %}" class="text-blue-600">Ver</a> |
+        <a href="{% url 'servicos:ordem_update' o.pk %}" class="text-yellow-600">Editar</a> |
+        <a href="{% url 'servicos:ordem_delete' o.pk %}" class="text-red-600">Excluir</a>
+      </td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="7" class="p-2">Nenhuma ordem.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "base_dashboard.html" %}
+{% block content %}
+<div class="flex justify-between items-center mb-4">
+  <h1 class="text-2xl font-bold">Clientes</h1>
+  <a href="{% url 'clientes:create' %}" class="bg-green-600 text-white px-3 py-1 rounded">Novo Cliente</a>
+</div>
+
+<table class="w-full bg-black shadow rounded">
+  <thead class="bg-green-100">
+    <tr>
+      <th class="p-2 text-left">Nome</th>
+      <th class="p-2 text-left">CPF</th>
+      <th class="p-2 text-left">Telefone</th>
+      <th class="p-2 text-left">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for cliente in clientes %}
+    <tr class="border-t">
+      <td class="p-2">{{ cliente.nome }}</td>
+      <td class="p-2">{{ cliente.cpf }}</td>
+      <td class="p-2">{{ cliente.telefone }}</td>
+      <td class="p-2">
+        <a href="{% url 'clientes:detail' cliente.pk %}" class="text-blue-600">Ver</a>
+        |
+        <a href="{% url 'clientes:update' cliente.pk %}" class="text-yellow-600">Editar</a>
+        |
+        <a href="{% url 'clientes:delete' cliente.pk %}" class="text-red-600">Excluir</a>
+      </td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="4" class="p-2">Nenhum cliente cadastrado.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<div class="mt-4">
+  {% if is_paginated %}
+    <div class="flex gap-2">
+      {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}" class="px-2 py-1 bg-gray-200 rounded">Anterior</a>
+      {% endif %}
+      <span class="px-2 py-1">Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span>
+      {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}" class="px-2 py-1 bg-gray-200 rounded">Próxima</a>
+      {% endif %}
+    </div>
+  {% endif %}
+</div>
+{% endblock %}
