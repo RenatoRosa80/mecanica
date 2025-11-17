@@ -11,3 +11,8 @@ git commit -m "Final project version"
 
 # 3. Force o push (se você tem certeza que quer substituir o remoto)
 git push -u origin main --force
+
+
+for Render:
+
+gunicorn
