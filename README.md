@@ -16,3 +16,16 @@ git push -u origin main --force
 for Render:
 
 gunicorn
+
+Build Command: (mantenha como está)
+
+bash
+pip install gunicorn && pip install -r requirements.txt
+Start Command: (ALTERE PARA)
+
+bash
+python -m gunicorn mecanica.wsgi:application --bind 0.0.0.0:$PORT
+
+ALLOWED HOST: 'mecanica-qbou.onrender.com',
+    'localhost',
+    '127.0.0.1',
