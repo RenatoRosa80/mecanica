@@ -45,6 +45,27 @@ import os
 
 ALLOWED_HOSTS = []
 
+
+Mascara para cpf funcionar sem padrao:
+
+
+// Máscara para CPF
+document.addEventListener('DOMContentLoaded', function() {
+    const cpfField = document.querySelector('#id_cpf');
+    if (cpfField) {
+        cpfField.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length <= 11) {
+                value = value.replace(/(\d{3})(\d)/, '$1.$2');
+                value = value.replace(/(\d{3})(\d)/, '$1.$2');
+                value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+                e.target.value = value;
+            }
+        });
+    }
+});
+</script>
+
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
