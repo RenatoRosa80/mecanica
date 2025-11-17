@@ -26,6 +26,10 @@ Start Command: (ALTERE PARA)
 bash
 python -m gunicorn mecanica.wsgi:application --bind 0.0.0.0:$PORT
 
-ALLOWED HOST: 'mecanica-qbou.onrender.com',
+# mecanica/settings.py
+ALLOWED_HOSTS = [
+    'mecanica-qbou.onrender.com',
     'localhost',
     '127.0.0.1',
+    '.onrender.com',  # Permite todos subdomínios do Render
+]
